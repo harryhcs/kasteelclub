@@ -3,7 +3,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
 
   // Worker name
-  "name": "__change_me__",
+  "name": "kasteelclub",
 
   // Entry point
   "main": "src/worker.tsx",
@@ -14,12 +14,12 @@
 
   // Assets configuration
   "assets": {
-    "binding": "ASSETS",
+    "binding": "ASSETS"
   },
 
   // Observability settings
   "observability": {
-    "enabled": true,
+    "enabled": true
   },
 
   // Durable Objects configuration
@@ -28,13 +28,13 @@
       {
         "name": "SESSION_DURABLE_OBJECT",
         "class_name": "SessionDurableObject",
-      },
-    ],
+      }
+    ]
   },
 
   // Environment variables
   "vars": {
-    "APP_NAME": "__change_me__",
+    "APP_NAME": "kasteelclub"
   },
 
   // Migrations configuration
@@ -42,15 +42,15 @@
     {
       "tag": "v1",
       "new_classes": ["SessionDurableObject"],
-    },
+    }
   ],
 
   // D1 database configuration
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "__change_me__",
-      "database_id": "__change_me__",
-    },
-  ],
+      "database_name": "kasteelclub",
+      "database_id": "f96a1e92-4649-4062-9988-242b4d6ad972"
+    }
+  ]
 }
