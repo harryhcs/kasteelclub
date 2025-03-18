@@ -1,7 +1,7 @@
 import { defineApp } from "redwoodsdk/worker";
 import { route, layout, prefix } from "redwoodsdk/router";
 import { Document } from "@/app/Document";
-import { Home } from "@/app/pages/Home";
+import { HomePage } from "@/app/pages/Home";
 import { setCommonHeaders } from "@/app/headers";
 import { authRoutes } from "@/app/pages/auth/routes";
 import { sessions, setupSessionStore } from "./session/store";
@@ -9,7 +9,7 @@ import { Session } from "./session/durableObject";
 import { db, setupDb } from "./db";
 import type { User } from "@prisma/client";
 export { SessionDurableObject } from "./session/durableObject";
-
+import { tradesmenRoutes } from "@/app/pages/tradesmen/routes";
 export type Context = {
   session: Session | null;
   user: User | null;
@@ -31,18 +31,19 @@ export default defineApp<Context>([
     }
   },
   layout(Document, [
-    route('/', () => new Response("Hello, World!")),
-    route('/protected', [
-      ({ ctx }) => {
-        if (!ctx.user) {
-          return new Response(null, {
-            status: 302,
-            headers: { Location: "/user/login" },
-          });
-        }
-      },
-      Home,
-    ]),
-    prefix("/user", authRoutes),
+    route('/', HomePage),
+    prefix('/tradesmen', tradesmenRoutes),
+    // route('/protected', [
+    //   ({ ctx }) => {
+    //     if (!ctx.user) {
+    //       return new Response(null, {
+    //         status: 302,
+    //         headers: { Location: "/user/login" },
+    //       });
+    //     }
+    //   },
+    //   HomePage,
+    // ]),
+    // prefix("/user", authRoutes),
   ]),
 ]);
