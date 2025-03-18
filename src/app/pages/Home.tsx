@@ -37,7 +37,7 @@ export function HomePage() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
           {trades.map((trade) => (
-            <Button key={trade} variant="outline" className="w-full">
+            <Button key={trade} variant="outline" className="w-full" onClick={() => (window.location.href = `/tradesmen/${trade}`)}>
               {trade}
             </Button>
           ))}
